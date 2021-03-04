@@ -63,6 +63,7 @@ return [
     ],
 
     'handler' => new AwsHandler([
+        'enabled' => env('AWS_ELASTICSEARCH_ENABLED', false),
         'aws_access_key_id' => env('AWS_ACCESS_KEY_ID'),
         'aws_secret_access_key' => env('AWS_SECRET_ACCESS_KEY'),
         'aws_region' => env('AWS_REGION', 'us-east-1'),

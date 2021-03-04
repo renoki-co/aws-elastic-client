@@ -74,8 +74,8 @@ jobs:
     - uses: getong/elasticsearch-action@v1.2
       with:
         elasticsearch version: '${{ matrix.es }}'
-        host port: 9200
-        container port: 9200
+        host port: 80
+        container port: 80
         host node port: 9300
         node port: 9300
         discovery type: 'single-node'
@@ -93,7 +93,7 @@ jobs:
 
     - name: Wait for Elasticsearch to be ready
       run: |
-        until curl --silent -XGET --fail http://127.0.0.1:9200; do printf '.'; sleep 1; done
+        until curl --silent -XGET --fail http://127.0.0.1:80; do printf '.'; sleep 1; done
 
     - name: Run tests
       run: |

@@ -22,18 +22,6 @@ abstract class TestCase extends Orchestra
     {
         parent::setUp();
 
-        $this->app['config']->set('elastic.client', [
-            'hosts' => [[
-                'host' => '127.0.0.1',
-                'port' => 9200,
-            ]],
-            'handler' => new AwsHandler([
-                'aws_access_key_id' => 'SOME_ID',
-                'aws_secret_access_key' => 'SOME_SECRET',
-                'aws_region' => 'us-east-1',
-            ]),
-        ]);
-
         $this->client = $this->app->make(Client::class);
     }
 

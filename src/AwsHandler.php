@@ -4,6 +4,7 @@ namespace RenokiCo\AwsElasticHandler;
 
 use Aws\Credentials\Credentials;
 use Aws\Signature\SignatureV4;
+use Elasticsearch\ClientBuilder;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Uri;
 use GuzzleHttp\Ring\Future\CompletedFutureArray;
@@ -38,6 +39,12 @@ class AwsHandler
      */
     public function __invoke(array $request)
     {
+        if (! $this->config['enabled'] ?? false) {
+            $defaultHandler = ClientBuilder::defaultHandler();
+
+            return $defaultHandler($request);
+        }
+
         $psr7Handler = \Aws\default_http_handler();
         $signer = new SignatureV4('es', $this->config['aws_region']);
 
