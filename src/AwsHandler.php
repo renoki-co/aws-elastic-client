@@ -51,7 +51,11 @@ class AwsHandler
         // Sign the PSR-7 request with credentials from the environment.
         $signedRequest = $signer->signRequest(
             $psr7Request,
-            new Credentials($this->config['aws_access_key_id'], $this->config['aws_secret_access_key'])
+            new Credentials(
+                $this->config['aws_access_key_id'],
+                $this->config['aws_secret_access_key'],
+                $this->config['aws_session_token'] ?? null
+            )
         );
 
         // Send the signed request to Amazon ES.

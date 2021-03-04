@@ -66,6 +66,7 @@ return [
         'aws_access_key_id' => env('AWS_ACCESS_KEY_ID'),
         'aws_secret_access_key' => env('AWS_SECRET_ACCESS_KEY'),
         'aws_region' => env('AWS_REGION', 'us-east-1'),
+        'aws_session_token' => env('AWS_SESSION_TOKEN'), // optional
     ]),
 
 ];
