@@ -39,6 +39,18 @@ jobs:
             testbench: '5.*'
           - laravel: '8.*'
             testbench: '6.*'
+          - es: '7.5.2'
+            es-php: '7.5.*'
+          - es: '7.6.2'
+            es-php: '7.6.*'
+          - es: '7.7.1'
+            es-php: '7.7.*'
+          - es: '7.8.1'
+            es-php: '7.8.*'
+          - es: '7.9.3'
+            es-php: '7.9.*'
+          - es: '7.10.2'
+            es-php: '7.10.*'
 
     name: PHP ${{ matrix.php }} - ES ${{ matrix.es }} Laravel ${{ matrix.laravel }} --${{ matrix.prefer }}
 
