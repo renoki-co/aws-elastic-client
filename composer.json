@@ -12,7 +12,12 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0"
+        "php": "^7.4|^8.0",
+        "aws/aws-sdk-php": "^3.132",
+        "babenkoivan/elastic-client": "^1.2",
+        "guzzlehttp/guzzle": "^6.5|7.0",
+        "guzzlehttp/ring": "1.1.x-dev",
+        "illuminate/support": "^7.0|^8.0"
     },
     "autoload": {
         "psr-4": {

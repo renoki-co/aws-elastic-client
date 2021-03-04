@@ -2,16 +2,48 @@
 
 namespace RenokiCo\AwsElasticHandler\Test;
 
+use Elasticsearch\Client;
 use Orchestra\Testbench\TestCase as Orchestra;
+use RenokiCo\AwsElasticHandler\AwsHandler;
 
 abstract class TestCase extends Orchestra
 {
+    /**
+     * The client interface.
+     *
+     * @var Elasticsearch\Client
+     */
+    protected $client;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->app['config']->set('elastic.client', [
+            'hosts' => [[
+                'host' => '127.0.0.1',
+                'port' => 9200,
+            ]],
+            'handler' => new AwsHandler([
+                'aws_access_key_id' => 'SOME_ID',
+                'aws_secret_access_key' => 'SOME_SECRET',
+                'aws_region' => 'us-east-1',
+            ]),
+        ]);
+
+        $this->client = $this->app->make(Client::class);
+    }
+
     /**
      * {@inheritdoc}
      */
     protected function getPackageProviders($app)
     {
         return [
+            \ElasticClient\ServiceProvider::class,
             \RenokiCo\AwsElasticHandler\AwsElasticHandlerServiceProvider::class,
         ];
     }

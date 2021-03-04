@@ -27,10 +27,48 @@ You can install the package via composer:
 composer require renoki-co/aws-elastic-client
 ```
 
+This package comes with configuration for the Elastic Client, so you need to publish the config. This will create a `config/elastic.client.php` file:
+
+```bash
+$ php artisan vendor:publish --provider="ElasticClient\ServiceProvider"
+```
+
 ## 🙌 Usage
 
+By default, the `elastic.client.php` file looks like this:
+
 ```php
-$ //
+return [
+    'hosts' => [
+        env('ELASTIC_HOST', 'localhost:9200'),
+    ],
+];
+```
+
+To authenticate to AWS, you will need to define a `handler` key for each host:
+
+```php
+use RenokiCo\AwsElasticHandler\AwsHandler;
+
+return [
+
+    'hosts' => [
+        [
+            'host' => env('ELASTIC_HOST', '127.0.0.1'),
+            'port' => env('ELASTIC_PORT', 9200),
+            // the rest of ES configuration goes here...
+        ],
+
+        // ...
+    ],
+
+    'handler' => new AwsHandler([
+        'aws_access_key_id' => env('AWS_ACCESS_KEY_ID'),
+        'aws_secret_access_key' => env('AWS_SECRET_ACCESS_KEY'),
+        'aws_region' => env('AWS_REGION', 'us-east-1'),
+    ]),
+
+];
 ```
 
 ## 🐛 Testing

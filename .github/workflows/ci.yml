@@ -20,7 +20,14 @@ jobs:
       matrix:
         php:
           - '7.4'
-          - '8.0'
+          # - '8.0'
+        es:
+          - '7.5.2'
+          - '7.6.2'
+          - '7.7.1'
+          - '7.8.1'
+          - '7.9.3'
+          - '7.10.2'
         laravel:
           - 7.*
           - 8.*
@@ -33,7 +40,7 @@ jobs:
           - laravel: '8.*'
             testbench: '6.*'
 
-    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} --${{ matrix.prefer }}
+    name: PHP ${{ matrix.php }} - ES ${{ matrix.es }} Laravel ${{ matrix.laravel }} --${{ matrix.prefer }}
 
     steps:
     - uses: actions/checkout@v1
@@ -45,6 +52,22 @@ jobs:
         extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
         coverage: pcov
 
+    - name: Configure sysctl limits
+      run: |
+        sudo swapoff -a
+        sudo sysctl -w vm.swappiness=1
+        sudo sysctl -w fs.file-max=262144
+        sudo sysctl -w vm.max_map_count=262144
+
+    - uses: getong/elasticsearch-action@v1.2
+      with:
+        elasticsearch version: '${{ matrix.es }}'
+        host port: 9200
+        container port: 9200
+        host node port: 9300
+        node port: 9300
+        discovery type: 'single-node'
+
     - uses: actions/cache@v1
       name: Cache dependencies
       with:
@@ -53,8 +76,12 @@ jobs:
 
     - name: Install dependencies
       run: |
-        composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+        composer require "laravel/framework:${{ matrix.laravel }}" "elasticsearch/elasticsearch:${{ matrix.es-php }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
         composer update --${{ matrix.prefer }} --prefer-dist --no-interaction --no-suggest
+
+    - name: Wait for Elasticsearch to be ready
+      run: |
+        until curl --silent -XGET --fail http://127.0.0.1:9200; do printf '.'; sleep 1; done
 
     - name: Run tests
       run: |
