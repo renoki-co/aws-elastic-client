@@ -1,17 +1,15 @@
-Package Name Here
-===================================
+AWS Elastic Client
+==================
 
-![CI](https://github.com/renoki-co/:package_name/workflows/CI/badge.svg?branch=master)
-[![codecov](https://codecov.io/gh/renoki-co/:package_name/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/:package_name/branch/master)
+![CI](https://github.com/renoki-co/aws-elastic-client/workflows/CI/badge.svg?branch=master)
+[![codecov](https://codecov.io/gh/renoki-co/aws-elastic-client/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/aws-elastic-client/branch/master)
 [![StyleCI](https://github.styleci.io/repos/:styleci_code/shield?branch=master)](https://github.styleci.io/repos/:styleci_code)
-[![Latest Stable Version](https://poser.pugx.org/renoki-co/:package_name/v/stable)](https://packagist.org/packages/renoki-co/:package_name)
-[![Total Downloads](https://poser.pugx.org/renoki-co/:package_name/downloads)](https://packagist.org/packages/renoki-co/:package_name)
-[![Monthly Downloads](https://poser.pugx.org/renoki-co/:package_name/d/monthly)](https://packagist.org/packages/renoki-co/:package_name)
-[![License](https://poser.pugx.org/renoki-co/:package_name/license)](https://packagist.org/packages/renoki-co/:package_name)
+[![Latest Stable Version](https://poser.pugx.org/renoki-co/aws-elastic-client/v/stable)](https://packagist.org/packages/renoki-co/aws-elastic-client)
+[![Total Downloads](https://poser.pugx.org/renoki-co/aws-elastic-client/downloads)](https://packagist.org/packages/renoki-co/aws-elastic-client)
+[![Monthly Downloads](https://poser.pugx.org/renoki-co/aws-elastic-client/d/monthly)](https://packagist.org/packages/renoki-co/aws-elastic-client)
+[![License](https://poser.pugx.org/renoki-co/aws-elastic-client/license)](https://packagist.org/packages/renoki-co/aws-elastic-client)
 
-**Note:** Replace  ```:package_name``` ```:package_description``` ```:package_namespace``` ```:package_service_provider``` ```:styleci_code``` with their correct values in [README.md](README.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE](LICENSE) and [composer.json](composer.json) files, then delete this line.
-
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+Elastic Client handler for Laravel that supports AWS Elasticsearch service on [babenkoivan/elastic-client](https://github.com/babenkoivan/elastic-client).
 
 ## 🤝 Supporting
 
@@ -26,19 +24,7 @@ If you are using your application in your day-to-day job, on presentation demos,
 You can install the package via composer:
 
 ```bash
-composer require renoki-co/:package_name
-```
-
-Publish the config:
-
-```bash
-$ php artisan vendor:publish --provider="RenokiCo\:package_namespace\:package_service_provider" --tag="config"
-```
-
-Publish the migrations:
-
-```bash
-$ php artisan vendor:publish --provider="RenokiCo\:package_namespace\:package_service_provider" --tag="migrations"
+composer require renoki-co/aws-elastic-client
 ```
 
 ## 🙌 Usage

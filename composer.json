@@ -1,9 +1,9 @@
 {
-    "name": "renoki-co/:package_name",
-    "description": ":package_description",
-    "keywords": ["laravel", "php"],
+    "name": "renoki-co/aws-elastic-client",
+    "description": "Elastic Client handler for Laravel that supports AWS Elasticsearch service.",
+    "keywords": ["laravel", "php", "elastic", "elasticsearch", "client", "aws"],
     "license": "Apache-2.0",
-    "homepage": "https://github.com/renoki-co/:package_name",
+    "homepage": "https://github.com/renoki-co/aws-elastic-client",
     "authors": [
         {
             "name": "Alex Renoki",
@@ -16,12 +16,12 @@
     },
     "autoload": {
         "psr-4": {
-            "RenokiCo\\:package_namespace\\": "src/"
+            "RenokiCo\\AwsElasticHandler\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RenokiCo\\:package_namespace\\Test\\": "tests"
+            "RenokiCo\\AwsElasticHandler\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -30,8 +30,7 @@
     "require-dev": {
         "laravel/legacy-factories": "^1.1",
         "mockery/mockery": "^1.4",
-        "orchestra/testbench": "^5.0|^6.0",
-        "orchestra/database": "^5.0|^6.0"
+        "orchestra/testbench": "^5.0|^6.0"
     },
     "config": {
         "sort-packages": true
@@ -40,7 +39,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "RenokiCo\\:package_namespace\\:package_service_provider"
+                "RenokiCo\\AwsElasticHandler\\AwsElasticHandlerServiceProvider"
             ]
         }
     }
