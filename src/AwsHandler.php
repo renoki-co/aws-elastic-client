@@ -8,7 +8,6 @@ use Elasticsearch\ClientBuilder;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Uri;
 use GuzzleHttp\Ring\Future\CompletedFutureArray;
-use Illuminate\Support\Arr;
 use Psr\Http\Message\ResponseInterface;
 
 class AwsHandler

@@ -2,7 +2,7 @@
 
 namespace RenokiCo\AwsElasticHandler\Test;
 
-use Elasticsearch\Client;
+use RenokiCo\AwsElasticHandler\AwsHandler;
 
 class ClientTest extends TestCase
 {

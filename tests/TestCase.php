@@ -4,7 +4,6 @@ namespace RenokiCo\AwsElasticHandler\Test;
 
 use Elasticsearch\Client;
 use Orchestra\Testbench\TestCase as Orchestra;
-use RenokiCo\AwsElasticHandler\AwsHandler;
 
 abstract class TestCase extends Orchestra
 {
