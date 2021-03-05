@@ -2,28 +2,10 @@
 
 namespace RenokiCo\AwsElasticHandler\Test;
 
-use Elasticsearch\Client;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
-    /**
-     * The client interface.
-     *
-     * @var Elasticsearch\Client
-     */
-    protected $client;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->client = $this->app->make(Client::class);
-    }
-
     /**
      * {@inheritdoc}
      */

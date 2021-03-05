@@ -2,6 +2,7 @@
 
 namespace RenokiCo\AwsElasticHandler\Test;
 
+use Elasticsearch\Client;
 use RenokiCo\AwsElasticHandler\AwsHandler;
 
 class ClientTest extends TestCase
@@ -11,7 +12,7 @@ class ClientTest extends TestCase
         $this->app['config']->set('elastic.client', [
             'hosts' => [[
                 'host' => '127.0.0.1',
-                'port' => 80,
+                'port' => 9200,
             ]],
             'handler' => new AwsHandler([
                 'enabled' => true,
@@ -21,7 +22,7 @@ class ClientTest extends TestCase
             ]),
         ]);
 
-        $this->client->indices()->create([
+        $this->app->make(Client::class)->indices()->create([
             'index' => 'some-index',
         ]);
     }
@@ -31,7 +32,7 @@ class ClientTest extends TestCase
         $this->app['config']->set('elastic.client', [
             'hosts' => [[
                 'host' => '127.0.0.1',
-                'port' => 80,
+                'port' => 9200,
             ]],
             'handler' => new AwsHandler([
                 'enabled' => false,
@@ -41,7 +42,7 @@ class ClientTest extends TestCase
             ]),
         ]);
 
-        $this->client->indices()->create([
+        $this->app->make(Client::class)->indices()->create([
             'index' => 'some-index-2',
         ]);
     }
