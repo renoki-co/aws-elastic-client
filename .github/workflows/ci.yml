@@ -75,7 +75,7 @@ jobs:
       with:
         elasticsearch version: '${{ matrix.es }}'
         host port: 80
-        container port: 80
+        container port: 9200
         host node port: 9300
         node port: 9300
         discovery type: 'single-node'
