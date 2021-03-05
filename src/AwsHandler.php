@@ -39,9 +39,7 @@ class AwsHandler
     public function __invoke(array $request)
     {
         if (! $this->config['enabled'] ?? false) {
-            $defaultHandler = ClientBuilder::defaultHandler();
-
-            return $defaultHandler($request);
+            return $this->handleRequestWithDefaultHandler($request);
         }
 
         $psr7Handler = \Aws\default_http_handler();
@@ -49,7 +47,10 @@ class AwsHandler
 
         $psr7Request = new Request(
             $request['http_method'],
-            (new Uri($request['uri']))->withScheme($request['scheme'])->withHost($request['headers']['Host'][0]),
+            (new Uri($request['uri']))
+                ->withScheme($request['scheme'])
+                ->withHost($request['headers']['Host'][0])
+                ->withPort($request['client']['curl'][3] ?? 9200),
             $request['headers'],
             $request['body']
         );
@@ -71,6 +72,10 @@ class AwsHandler
             return $error['response'];
         })->wait();
 
+        if (! $response) {
+            return $this->handleRequestWithDefaultHandler($request);
+        }
+
         // Convert the PSR-7 response to a RingPHP response.
         return new CompletedFutureArray([
             'status' => $response->getStatusCode(),
@@ -79,5 +84,18 @@ class AwsHandler
             'transfer_stats' => ['total_time' => 0],
             'effective_url' => (string) $psr7Request->getUri(),
         ]);
+    }
+
+    /**
+     * Handle the request with default handler.
+     *
+     * @param  array  $request
+     * @return \GuzzleHttp\Ring\Future\CompletedFutureArray
+     */
+    protected function handleRequestWithDefaultHandler(array $request)
+    {
+        $defaultHandler = ClientBuilder::defaultHandler();
+
+        return $defaultHandler($request);
     }
 }
