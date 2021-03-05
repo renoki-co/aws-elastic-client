@@ -5,6 +5,7 @@ namespace RenokiCo\AwsElasticHandler\Test;
 use Elasticsearch\Client;
 use Elasticsearch\Common\Exceptions\NoNodesAvailableException;
 use RenokiCo\AwsElasticHandler\AwsHandler;
+
 class ClientTest extends TestCase
 {
     public function test_aws_authentication()
