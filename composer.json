@@ -16,7 +16,7 @@
         "aws/aws-sdk-php": "^3.132",
         "babenkoivan/elastic-client": "^1.2",
         "guzzlehttp/guzzle": "^6.5|7.0",
-        "guzzlehttp/ring": "1.1.x-dev",
+        "guzzlehttp/ring": "^1.1.1",
         "illuminate/support": "^7.0|^8.0"
     },
     "autoload": {
