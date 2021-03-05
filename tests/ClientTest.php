@@ -63,8 +63,8 @@ class ClientTest extends TestCase
     {
         $this->app['config']->set('elastic.client', [
             'hosts' => [[
-                'host' => '127.0.0.2',
-                'port' => 9200,
+                'host' => '127.0.0.1',
+                'port' => 3306,
             ]],
             'handler' => new AwsHandler([
                 'enabled' => true,
