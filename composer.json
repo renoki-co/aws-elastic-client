@@ -1,7 +1,7 @@
 {
     "name": "renoki-co/aws-elastic-client",
-    "description": "Elastic Client handler for Laravel that supports AWS Elasticsearch service.",
-    "keywords": ["laravel", "php", "elastic", "elasticsearch", "client", "aws"],
+    "description": "Custom Elasticsearch Client handler that signs the requests for AWS Elasticsearch service with provided IAM credentials.",
+    "keywords": ["laravel", "php", "elastic", "elasticsearch", "handler", "client", "aws"],
     "license": "Apache-2.0",
     "homepage": "https://github.com/renoki-co/aws-elastic-client",
     "authors": [
@@ -14,7 +14,6 @@
     "require": {
         "php": "^7.4|^8.0",
         "aws/aws-sdk-php": "^3.132",
-        "babenkoivan/elastic-client": "^1.2",
         "guzzlehttp/guzzle": "^6.5|7.0",
         "guzzlehttp/ring": "^1.1.1",
         "illuminate/support": "^7.0|^8.0"
@@ -33,7 +32,7 @@
         "test": "vendor/bin/phpunit"
     },
     "require-dev": {
-        "laravel/legacy-factories": "^1.1",
+        "babenkoivan/elastic-client": "^1.2",
         "mockery/mockery": "^1.4",
         "orchestra/testbench": "^5.0|^6.0"
     },

@@ -9,7 +9,7 @@ AWS Elastic Client
 [![Monthly Downloads](https://poser.pugx.org/renoki-co/aws-elastic-client/d/monthly)](https://packagist.org/packages/renoki-co/aws-elastic-client)
 [![License](https://poser.pugx.org/renoki-co/aws-elastic-client/license)](https://packagist.org/packages/renoki-co/aws-elastic-client)
 
-Elastic Client handler for Laravel that supports AWS Elasticsearch service on [babenkoivan/elastic-client](https://github.com/babenkoivan/elastic-client).
+Custom Elasticsearch Client handler that signs the requests for AWS Elasticsearch service with provided IAM credentials.
 
 ## 🤝 Supporting
 
@@ -35,43 +35,47 @@ $ php artisan vendor:publish --provider="ElasticClient\ServiceProvider"
 
 ## 🙌 Usage
 
-By default, the `elastic.client.php` file looks like this:
-
-```php
-return [
-    'hosts' => [
-        env('ELASTIC_HOST', 'localhost:9200'),
-    ],
-];
-```
-
-To authenticate to AWS, you will need to define a `handler` key for each host:
+To authenticate to AWS, you will need to set the handler that comes with this package:
 
 ```php
 use RenokiCo\AwsElasticHandler\AwsHandler;
 
-return [
+$awsHandler = new AwsHandler([
+    'enabled' => true,
+    'aws_access_key_id' => '...',
+    'aws_secret_access_key' => '...',
+    'aws_region' => 'us-east-1',
+    'aws_session_token' => '...', // optional
+]);
 
-    'hosts' => [
-        [
-            'host' => env('ELASTIC_HOST', '127.0.0.1'),
-            'port' => env('ELASTIC_PORT', 9200),
-            // the rest of ES configuration goes here...
-        ],
-
-        // ...
-    ],
-
-    'handler' => new AwsHandler([
-        'enabled' => env('AWS_ELASTICSEARCH_ENABLED', false),
-        'aws_access_key_id' => env('AWS_ACCESS_KEY_ID'),
-        'aws_secret_access_key' => env('AWS_SECRET_ACCESS_KEY'),
-        'aws_region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
-        'aws_session_token' => env('AWS_SESSION_TOKEN'), // optional
-    ]),
-
-];
+$client = ClientBuilder::create()
+    ->setHosts(...)
+    ->setHandler($awsHandler)
+    ->build();
 ```
+
+If you are building th client statically using `fromConfig()`, pass the `handler` parameter:
+
+```php
+use RenokiCo\AwsElasticHandler\AwsHandler;
+
+$awsHandler = new AwsHandler([
+    'enabled' => true,
+    'aws_access_key_id' => '...',
+    'aws_secret_access_key' => '...',
+    'aws_region' => 'us-east-1',
+    'aws_session_token' => '...', // optional
+]);
+
+$client = ClientBuilder::fromConfig([
+    'hosts' => [
+        //
+    ],
+    'handler' => $awsHandler,
+]);
+```
+
+The package will make sure to sign each subsequent request that goes through with the IAM credentials you have provided.
 
 ## 🐛 Testing
 
