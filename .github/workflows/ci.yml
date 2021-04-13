@@ -80,7 +80,7 @@ jobs:
         node port: 9300
         discovery type: 'single-node'
 
-    - uses: actions/cache@v2.1.4
+    - uses: actions/cache@v2.1.5
       name: Cache dependencies
       with:
         path: ~/.composer/cache/files
