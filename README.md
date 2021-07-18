@@ -9,13 +9,15 @@ AWS Elastic Client Handler
 [![Monthly Downloads](https://poser.pugx.org/renoki-co/aws-elastic-client/d/monthly)](https://packagist.org/packages/renoki-co/aws-elastic-client)
 [![License](https://poser.pugx.org/renoki-co/aws-elastic-client/license)](https://packagist.org/packages/renoki-co/aws-elastic-client)
 
-Custom Elasticsearch Client handler that signs the requests for AWS Elasticsearch service with provided IAM credentials.
+Just a simple Elasticsearch Client handler that signs the requests for AWS Elasticsearch service with the provided credentials.
 
 ## 🤝 Supporting
 
-Renoki Co. on GitHub aims on bringing a lot of open source projects and helpful projects to the world. Developing and maintaining projects everyday is a harsh work and tho, we love it.
+Renoki Co. loves building open source (and helpful) projects on Github for any developer to have an easier job at building products. 📦 Developing and maintaining projects is a harsh job and tho, we love it.
 
-If you are using your application in your day-to-day job, on presentation demos, hobby projects or even school projects, spread some kind words about our work or sponsor our work. Kind words will touch our chakras and vibe, while the sponsorships will keep the open source projects alive.
+If you are using your application in your day-to-day job, on presentation demos, hobby projects, or even school projects, spread some kind words about our work or sponsor our work.
+
+_Kind words will touch our chakras and vibe, while the sponsorships will keep the open-source projects alive._
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R42U8CL)
 
@@ -25,12 +27,6 @@ You can install the package via composer:
 
 ```bash
 composer require renoki-co/aws-elastic-client
-```
-
-This package comes with configuration for the Elastic Client, so you need to publish the config. This will create a `config/elastic.client.php` file:
-
-```bash
-$ php artisan vendor:publish --provider="ElasticClient\ServiceProvider"
 ```
 
 ## 🙌 Usage
