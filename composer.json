@@ -1,6 +1,6 @@
 {
     "name": "renoki-co/aws-elastic-client",
-    "description": "Custom Elasticsearch Client handler that signs the requests for AWS Elasticsearch service with provided IAM credentials.",
+    "description": "Just a simple Elasticsearch Client handler that signs the requests for AWS Elasticsearch service with the provided credentials.",
     "keywords": ["laravel", "php", "elastic", "elasticsearch", "handler", "client", "aws"],
     "license": "Apache-2.0",
     "homepage": "https://github.com/renoki-co/aws-elastic-client",
