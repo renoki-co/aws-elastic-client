@@ -1,5 +1,5 @@
-AWS Elastic Client
-==================
+AWS Elastic Client Handler
+==========================
 
 ![CI](https://github.com/renoki-co/aws-elastic-client/workflows/CI/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/renoki-co/aws-elastic-client/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/aws-elastic-client/branch/master)
