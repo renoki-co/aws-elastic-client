@@ -20,37 +20,31 @@ jobs:
       matrix:
         php:
           - '7.4'
-          # - '8.0'
+          - '8.0'
         es:
-          - '7.5.2'
-          - '7.6.2'
-          - '7.7.1'
-          - '7.8.1'
-          - '7.9.3'
-          - '7.10.1'
+          - '7.11.2'
+          - '7.12.1'
+          - '7.13.2'
+          - '7.14.1'
         laravel:
           - 7.*
           - 8.*
         prefer:
-          # - 'prefer-lowest'
+          - 'prefer-lowest'
           - 'prefer-stable'
         include:
           - laravel: '7.*'
             testbench: '5.*'
           - laravel: '8.*'
             testbench: '6.*'
-          - es: '7.5.2'
-            es-php: '7.5.*'
-          - es: '7.6.2'
-            es-php: '7.6.*'
-          - es: '7.7.1'
-            es-php: '7.7.*'
-          - es: '7.8.1'
-            es-php: '7.8.*'
-          - es: '7.9.3'
-            es-php: '7.9.*'
-          - es: '7.10.1'
-            es-php: '7.10.*'
+          - es: '7.11.2'
+            es-php: '7.11.*'
+          - es: '7.12.1'
+            es-php: '7.12.*'
+          - es: '7.13.2'
+            es-php: '7.13.*'
+          - es: '7.14.1'
+            es-php: '7.14.*'
 
     name: PHP ${{ matrix.php }} - ES ${{ matrix.es }} Laravel ${{ matrix.laravel }} --${{ matrix.prefer }}
 
