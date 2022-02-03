@@ -17,34 +17,32 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: true
       matrix:
         php:
-          - '7.4'
           - '8.0'
+          - '8.1'
         es:
-          - '7.11.2'
-          - '7.12.1'
-          - '7.13.2'
-          - '7.14.1'
+          - '7.14.2'
+          - '7.15.2'
+          - '7.16.3'
+          - '7.17.0'
         laravel:
-          - 7.*
-          - 8.*
+          - 9.*
         prefer:
           # - 'prefer-lowest'
           - 'prefer-stable'
         include:
-          - laravel: '7.*'
-            testbench: '5.*'
           - laravel: '8.*'
-            testbench: '6.*'
-          - es: '7.11.2'
-            es-php: '7.11.*'
-          - es: '7.12.1'
-            es-php: '7.12.*'
-          - es: '7.13.2'
-            es-php: '7.13.*'
-          - es: '7.14.1'
+            testbench: '7.*'
+          - es: '7.14.2'
             es-php: '7.14.*'
+          - es: '7.15.2'
+            es-php: '7.15.*'
+          - es: '7.16.3'
+            es-php: '7.16.*'
+          - es: '7.17.0'
+            es-php: '7.17.*'
 
     name: PHP ${{ matrix.php }} - ES ${{ matrix.es }} Laravel ${{ matrix.laravel }} --${{ matrix.prefer }}
 
