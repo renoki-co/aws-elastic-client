@@ -33,7 +33,7 @@ jobs:
           # - 'prefer-lowest'
           - 'prefer-stable'
         include:
-          - laravel: '8.*'
+          - laravel: '9.*'
             testbench: '7.*'
           - es: '7.14.2'
             es-php: '7.14.*'
