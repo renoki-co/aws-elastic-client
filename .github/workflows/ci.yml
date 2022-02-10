@@ -28,6 +28,7 @@ jobs:
           - '7.16.0'
           - '7.17.0'
         laravel:
+          - 8.*
           - 9.*
         prefer:
           # - 'prefer-lowest'
