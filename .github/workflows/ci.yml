@@ -39,7 +39,7 @@ jobs:
             testbench: '5.*'
           - laravel: '8.*'
             testbench: '6.*'
-          - laravel: '8.*'
+          - laravel: '9.*'
             testbench: '7.*'
           - es: '7.11.2'
             es-php: '7.11.*'
