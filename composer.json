@@ -21,9 +21,9 @@
     ],
     "require": {
         "aws/aws-sdk-php": "^3.200",
-        "guzzlehttp/guzzle": "^6.5|^7.3",
+        "guzzlehttp/guzzle": "^6.5|^7.3|^7.2",
         "guzzlehttp/ring": "^1.1.1",
-        "illuminate/support": "^8.83|^9.0.1"
+        "illuminate/support": "^8.83|^9.0.1|^10.0"
     },
     "autoload": {
         "psr-4": {
@@ -39,11 +39,11 @@
         "test": "vendor/bin/phpunit"
     },
     "require-dev": {
-        "babenkoivan/elastic-client": "^1.2",
-        "mockery/mockery": "^1.5",
-        "orchestra/testbench": "^6.28|^7.0",
+        "babenkoivan/elastic-client": "^1.2|^2.0",
+        "mockery/mockery": "^1.5|^1.4.4",
+        "orchestra/testbench": "^6.28|^7.0|^8.0",
         "orchestra/testbench-core": "^6.28|^7.0",
-        "phpunit/phpunit": "^9.5.21"
+        "phpunit/phpunit": "^9.5.21|^9.5.10"
     },
     "config": {
         "sort-packages": true
