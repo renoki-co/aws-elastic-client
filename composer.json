@@ -39,7 +39,7 @@
         "test": "vendor/bin/phpunit"
     },
     "require-dev": {
-        "babenkoivan/elastic-client": "^1.2",
+        "babenkoivan/elastic-client": "^2.1",
         "mockery/mockery": "^1.5",
         "orchestra/testbench": "^6.28|^7.0",
         "orchestra/testbench-core": "^6.28|^7.0",
